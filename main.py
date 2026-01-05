@@ -30,7 +30,7 @@ def fetch_nasa_APODs(api_key):
     """
     params = {
         'api_key': api_key,
-        'count': 3,
+        'count': 30,
         'thumbs': 'true'
     }
     response = requests.get('https://api.nasa.gov/planetary/apod', params=params)
