@@ -9,15 +9,6 @@ APOD: Astronomy Picture of the Day
 """
 
 
-def get_spacex_last_captured_launch_id():
-    response = requests.get('https://api.spacexdata.com/v5/launches')
-    response.raise_for_status()
-
-    for launch in reversed(response.json()):
-        if len(launch["links"]["flickr"]["original"]):
-            return launch["id"]
-
-
 def main():
     params = {
         'api_key': config('NASA_API_KEY'),
