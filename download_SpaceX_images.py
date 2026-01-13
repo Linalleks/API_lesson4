@@ -1,8 +1,8 @@
 import requests
 import argparse
 
-from main import get_file_extension
-from main import download_image
+from helper_scripts import get_file_extension
+from helper_scripts import download_image
 
 
 def create_parser():

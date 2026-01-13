@@ -1,5 +1,5 @@
 import requests
-from main import download_image
+from helper_scripts import download_image
 
 """
 EPIC: Earth Polychromatic Imaging Camera

@@ -1,8 +1,8 @@
 import requests
 from decouple import config
 
-from main import get_file_extension
-from main import download_image
+from helper_scripts import get_file_extension
+from helper_scripts import download_image
 
 """
 APOD: Astronomy Picture of the Day
