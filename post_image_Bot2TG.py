@@ -9,7 +9,7 @@ from helper_scripts import get_all_files_paths
 
 def create_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--image_path', nargs='?')
+    parser.add_argument('image_path', nargs='?')
 
     return parser
 

@@ -7,7 +7,7 @@ from helper_scripts import download_image
 
 def create_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-l', '--launch_id', nargs='?')
+    parser.add_argument('launch_id', nargs='?')
 
     return parser
 
