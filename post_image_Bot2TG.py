@@ -1,10 +1,12 @@
-import telegram
+import argparse
 import os
 import random
-import argparse
+
+import telegram
 from decouple import config
-from helper_scripts import image_reduction
+
 from helper_scripts import get_all_files_paths
+from helper_scripts import image_reduction
 
 
 def create_parser():

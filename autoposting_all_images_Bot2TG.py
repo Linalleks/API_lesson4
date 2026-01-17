@@ -1,12 +1,13 @@
-import telegram
 import os
 import random
-from decouple import config
-from pytimeparse import parse
 from time import sleep
 
-from helper_scripts import image_reduction
+import telegram
+from decouple import config
+from pytimeparse import parse
+
 from helper_scripts import get_all_files_paths
+from helper_scripts import image_reduction
 
 
 def main():

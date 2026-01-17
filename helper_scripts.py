@@ -1,8 +1,9 @@
-import requests
 import os
-from PIL import Image
-from urllib.parse import urlparse
 from urllib.parse import unquote
+from urllib.parse import urlparse
+
+import requests
+from PIL import Image
 
 
 def download_image(image_url, download_path):

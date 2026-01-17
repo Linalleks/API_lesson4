@@ -1,5 +1,5 @@
-requests==2.32.4
 pillow==10.4.0
 python-decouple==3.8
 python-telegram-bot==13.2
 pytimeparse==1.1.8
+requests==2.32.4
