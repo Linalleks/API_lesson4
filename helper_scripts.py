@@ -24,7 +24,7 @@ def get_file_extension(image_url):
     return image_extension
 
 
-def image_reduction(image_path, max_size):
+def compress_image(image_path, max_size):
     with Image.open(image_path, 'r') as source:
         quality = 100
         new_image_path = os.path.splitext(image_path)[0] + '(resize).jpg'

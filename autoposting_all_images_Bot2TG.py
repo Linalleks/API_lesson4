@@ -7,7 +7,7 @@ from decouple import config
 from pytimeparse import parse
 
 from helper_scripts import get_all_files_paths
-from helper_scripts import image_reduction
+from helper_scripts import compress_image
 
 
 def main():
@@ -20,7 +20,7 @@ def main():
     while True:
         for number, image in enumerate(images_paths):
             if os.path.getsize(image) > max_size:
-                new_image = image_reduction(image, max_size)
+                new_image = compress_image(image, max_size)
                 images_paths[number] = new_image
                 image = new_image
             bot.send_photo(chat_id=channel_id, photo=open(image, 'rb'))

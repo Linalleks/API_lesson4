@@ -6,7 +6,7 @@ import telegram
 from decouple import config
 
 from helper_scripts import get_all_files_paths
-from helper_scripts import image_reduction
+from helper_scripts import compress_image
 
 
 def create_parser():
@@ -28,7 +28,7 @@ def main():
         image = random.choice(get_all_files_paths('images'))
 
     if os.path.getsize(image) > max_size:
-        new_image = image_reduction(image, max_size)
+        new_image = compress_image(image, max_size)
         image = new_image
     bot.send_photo(chat_id=channel_id, photo=open(image, 'rb'))
 
