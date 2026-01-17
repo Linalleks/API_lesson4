@@ -21,7 +21,10 @@ def main():
         response.raise_for_status()
 
         for image_number, image_data in enumerate(response.json(), 1):
-            image_url = image_data['url']
+            if image_data['media_type'] == 'video':
+                image_url = image_data['thumbnail_url']
+            else:
+                image_url = image_data['url']
             download_image(image_url, 'images/nasa_apod_' + str(image_number) + get_file_extension(image_url))
     except requests.exceptions.HTTPError as error:
         raise SystemExit(f'Произошла ошибка:\n{error}')
