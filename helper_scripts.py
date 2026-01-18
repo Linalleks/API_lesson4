@@ -35,13 +35,9 @@ def compress_image(image_path, max_size):
     return new_image_path
 
 
-def get_all_files_paths(files_dir):
+def get_all_files_paths(source_dir):
     files_paths = []
-    for dirpath, dirnames, filenames in os.walk(files_dir):
-        if dirpath == files_dir:
-            for image in filenames:
-                files_paths.append(dirpath.replace('\\', '/') + '/' + image)
-        else:
-            for image in filenames:
-                files_paths.append(dirpath.replace('\\', '/') + '/' + image)
+    for current_dir, internal_dirs, files in os.walk(source_dir):
+        for file in files:
+            files_paths.append(current_dir.replace('\\', '/') + '/' + file)
     return files_paths
