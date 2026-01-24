@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from urllib.parse import unquote
 from urllib.parse import urlparse
 
@@ -39,5 +40,13 @@ def get_all_files_paths(source_dir):
     files_paths = []
     for current_dir, internal_dirs, files in os.walk(source_dir):
         for file in files:
-            files_paths.append(current_dir.replace('\\', '/') + '/' + file)
+            files_paths.append(Path(current_dir) / file)
     return files_paths
+
+
+if __name__ == '__main__':
+    # Path.home() / 'python' / 'samples' / 'test_me.py'
+    image_number = 1
+    image_url = 'https://api.nasa.gov/planetary/apod/124klklll555.png'
+    ppp = Path('images') / f'nasa_apod_{image_number}{get_file_extension(image_url)}'
+    print(ppp)

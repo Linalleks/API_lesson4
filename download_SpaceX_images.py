@@ -1,4 +1,5 @@
 import argparse
+from pathlib import Path
 
 import requests
 
@@ -35,7 +36,7 @@ def main():
         response.raise_for_status()
 
         for image_number, image_url in enumerate(response.json()["links"]["flickr"]["original"], 1):
-            download_image(image_url, 'images/spacex_' + str(image_number) + get_file_extension(image_url))
+            download_image(image_url, Path('images') / f'spacex_{image_number}{get_file_extension(image_url)}')
     except requests.exceptions.HTTPError as error:
         raise SystemExit(f'Произошла ошибка:\n{error}')
 

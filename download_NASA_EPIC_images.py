@@ -1,3 +1,4 @@
+from pathlib import Path
 import requests
 
 from helper_scripts import download_image
@@ -18,7 +19,7 @@ def main():
             response.raise_for_status()
             epic_image = response.json()[0]['image'] + '.png'
             image_url = 'https://epic.gsfc.nasa.gov/archive/natural/' + epic_date['date'].replace('-', '/') + '/png/' + epic_image
-            download_image(image_url, 'images/nasa_epic_' + str(image_number) + '.png')
+            download_image(image_url, Path('images') / f'nasa_epic_{image_number}.png')
     except requests.exceptions.HTTPError as error:
         raise SystemExit(f'Произошла ошибка:\n{error}')
 
