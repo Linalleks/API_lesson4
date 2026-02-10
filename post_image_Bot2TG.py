@@ -30,7 +30,9 @@ def main():
     if os.path.getsize(image) > max_size:
         new_image = compress_image(image, max_size)
         image = new_image
-    bot.send_photo(chat_id=channel_id, photo=open(image, 'rb'))
+    with open(image, 'rb') as p:
+        photo = p.read()
+    bot.send_photo(chat_id=channel_id, photo=photo)
 
 
 if __name__ == '__main__':

@@ -23,7 +23,9 @@ def main():
                 new_image = compress_image(image, max_size)
                 images_paths[number] = new_image
                 image = new_image
-            bot.send_photo(chat_id=channel_id, photo=open(image, 'rb'))
+            with open(image, 'rb') as p:
+                photo = p.read()
+            bot.send_photo(chat_id=channel_id, photo=photo)
             sleep(set_delay)
         random.shuffle(images_paths)
 
