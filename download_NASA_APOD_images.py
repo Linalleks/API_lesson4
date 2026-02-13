@@ -17,18 +17,15 @@ def main():
         'thumbs': 'true'
     }
 
-    try:
-        response = requests.get('https://api.nasa.gov/planetary/apod', params=params)
-        response.raise_for_status()
+    response = requests.get('https://api.nasa.gov/planetary/apod', params=params)
+    response.raise_for_status()
 
-        for image_number, image_data in enumerate(response.json(), 1):
-            if image_data['media_type'] == 'video':
-                image_url = image_data['thumbnail_url']
-            else:
-                image_url = image_data['url']
-            download_image(image_url, Path('images') / f'nasa_apod_{image_number}{get_file_extension(image_url)}')
-    except requests.exceptions.HTTPError as error:
-        raise SystemExit(f'Произошла ошибка:\n{error}')
+    for image_number, image_data in enumerate(response.json(), 1):
+        if image_data['media_type'] == 'video':
+            image_url = image_data['thumbnail_url']
+        else:
+            image_url = image_data['url']
+        download_image(image_url, Path('images') / f'nasa_apod_{image_number}{get_file_extension(image_url)}')
 
 
 if __name__ == '__main__':
