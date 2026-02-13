@@ -31,8 +31,7 @@ def main():
         image = random.choice(get_all_files_paths('images'))
 
     if os.path.getsize(image) > max_size:
-        new_image = compress_image(image, max_size)
-        image = new_image
+        image = compress_image(image, max_size)
     with open(image, 'rb') as p:
         photo = p.read()
     bot.send_photo(chat_id=channel_id, photo=photo)
