@@ -42,13 +42,3 @@ def get_all_files_paths(source_dir):
         for file in files:
             files_paths.append(Path(current_dir) / file)
     return files_paths
-
-
-if __name__ == '__main__':
-    # Path.home() / 'python' / 'samples' / 'test_me.py'
-    image_number = 1
-    image_url = 'https://api.nasa.gov/planetary/apod/124klklll555.png'
-    ppp = Path('images') / f'nasa_apod_{image_number}{get_file_extension(image_url)}'
-    image_path = 'images\\nasa_epic_1.png'
-    new_image_path = f'{os.path.splitext(image_path)[0]}(resize).jpg'
-    print(new_image_path)
