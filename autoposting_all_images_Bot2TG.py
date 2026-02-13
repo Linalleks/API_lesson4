@@ -13,7 +13,7 @@ from helper_scripts import compress_image
 def main():
     bot = telegram.Bot(token=config('TG_BOT_TOKEN'))
     channel_id = config('TG_CHANNEL_ID')
-    set_delay = parse(config('SET_DELAY', default='4h'))
+    delay = parse(config('DELAY', default='4h'))
     max_size = 10485760
     images_paths = get_all_files_paths('images')
 
@@ -26,7 +26,7 @@ def main():
             with open(image, 'rb') as p:
                 photo = p.read()
             bot.send_photo(chat_id=channel_id, photo=photo)
-            sleep(set_delay)
+            sleep(delay)
         random.shuffle(images_paths)
 
 
