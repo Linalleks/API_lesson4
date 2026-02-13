@@ -8,8 +8,11 @@ from helper_scripts import get_file_extension
 
 
 def create_parser():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('launch_id', nargs='?')
+    parser = argparse.ArgumentParser(description='''
+                                     Приложение скачивает фото от SpaceX по указанному как аргумент ID запуска.
+                                     Если ID запуска не указан, скачивает фото с последнего запуска с имеющимися фото.
+                                     ''')
+    parser.add_argument('launch_id', nargs='?', help='ID запуска SpaceX')
 
     return parser
 

@@ -10,8 +10,11 @@ from helper_scripts import compress_image
 
 
 def create_parser():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('image_path', nargs='?')
+    parser = argparse.ArgumentParser(description='''
+                                     Приложение публикует указанную как аргумент фотографию в Телеграмм-канал.
+                                     Если фотография не указана, публикует случайную фотографию из папки "images".
+                                     ''')
+    parser.add_argument('image_path', nargs='?', help='Относительный путь до фотографии для публикации')
 
     return parser
 
