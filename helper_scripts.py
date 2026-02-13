@@ -28,7 +28,7 @@ def get_file_extension(image_url):
 def compress_image(image_path, max_size):
     with Image.open(image_path, 'r') as source:
         quality = 100
-        new_image_path = os.path.splitext(image_path)[0] + '(resize).jpg'
+        new_image_path = f'{os.path.splitext(image_path)[0]}(resize).jpg'
         source.save(new_image_path, quality=quality, optimize=True, progressive=True)
         while os.path.getsize(new_image_path) > max_size:
             quality -= 1
@@ -49,4 +49,6 @@ if __name__ == '__main__':
     image_number = 1
     image_url = 'https://api.nasa.gov/planetary/apod/124klklll555.png'
     ppp = Path('images') / f'nasa_apod_{image_number}{get_file_extension(image_url)}'
-    print(ppp)
+    image_path = 'images\\nasa_epic_1.png'
+    new_image_path = f'{os.path.splitext(image_path)[0]}(resize).jpg'
+    print(new_image_path)

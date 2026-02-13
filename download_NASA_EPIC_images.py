@@ -14,10 +14,10 @@ def main():
     epic_dates = response.json()[:10]
 
     for image_number, epic_date in enumerate(epic_dates, 1):
-        response = requests.get('https://epic.gsfc.nasa.gov/api/natural/date/' + epic_date['date'])
+        response = requests.get(f'https://epic.gsfc.nasa.gov/api/natural/date/{epic_date["date"]}')
         response.raise_for_status()
-        epic_image = response.json()[0]['image'] + '.png'
-        image_url = 'https://epic.gsfc.nasa.gov/archive/natural/' + epic_date['date'].replace('-', '/') + '/png/' + epic_image
+        epic_image = f'{response.json()[0]["image"]}.png'
+        image_url = f'https://epic.gsfc.nasa.gov/archive/natural/{epic_date["date"].replace("-", "/")}/png/{epic_image}'
         download_image(image_url, Path('images') / f'nasa_epic_{image_number}.png')
 
 

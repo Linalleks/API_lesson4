@@ -31,7 +31,7 @@ def main():
     else:
         launch_id = get_spacex_last_captured_launch_id()
 
-    response = requests.get('https://api.spacexdata.com/v5/launches/' + launch_id)
+    response = requests.get(f'https://api.spacexdata.com/v5/launches/{launch_id}')
     response.raise_for_status()
 
     for image_number, image_url in enumerate(response.json()["links"]["flickr"]["original"], 1):
