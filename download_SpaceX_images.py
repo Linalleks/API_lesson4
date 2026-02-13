@@ -12,7 +12,7 @@ def create_parser():
                                      Приложение скачивает фото от SpaceX по указанному как аргумент ID запуска.
                                      Если ID запуска не указан, скачивает фото с последнего запуска с имеющимися фото.
                                      ''')
-    parser.add_argument('launch_id', nargs='?', help='ID запуска SpaceX')
+    parser.add_argument('launch_id', help='ID запуска SpaceX')
 
     return parser
 
