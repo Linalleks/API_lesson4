@@ -8,31 +8,15 @@ from helper_scripts import get_file_extension
 
 
 def create_parser():
-    parser = argparse.ArgumentParser(description='''
-                                     Приложение скачивает фото от SpaceX по указанному как аргумент ID запуска.
-                                     Если ID запуска не указан, скачивает фото с последнего запуска с имеющимися фото.
-                                     ''')
+    parser = argparse.ArgumentParser(description='Приложение скачивает фото от SpaceX по указанному как аргумент ID запуска.')
     parser.add_argument('launch_id', help='ID запуска SpaceX')
 
     return parser
 
 
-def get_spacex_last_captured_launch_id():
-    response = requests.get('https://api.spacexdata.com/v5/launches')
-    response.raise_for_status()
-
-    for launch in reversed(response.json()):
-        if len(launch["links"]["flickr"]["original"]):
-            return launch["id"]
-
-
 def main():
     parser = create_parser()
-
-    if parser.parse_args().launch_id:
-        launch_id = parser.parse_args().launch_id
-    else:
-        launch_id = get_spacex_last_captured_launch_id()
+    launch_id = parser.parse_args().launch_id
 
     response = requests.get(f'https://api.spacexdata.com/v5/launches/{launch_id}')
     response.raise_for_status()
